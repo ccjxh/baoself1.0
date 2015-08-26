@@ -44,6 +44,7 @@
     [super viewDidLoad];
     _currentPage=1;
     _currentCityName=@"深圳市";
+    self.automaticallyAdjustsScrollViewInsets=NO;
     [self initData];
     [self initUI];
     [self request];

@@ -26,6 +26,7 @@
                     }
         
                 }];
+        
                 [self.tableview tablePullUpWithBlock:^(UITableView *self) {
                    //下拉加载
                     if (WeSelf.tableviewPullup) {
