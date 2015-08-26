@@ -1,0 +1,27 @@
+//
+//  findWorkListModel.h
+//  master
+//
+//  Created by jin on 15/8/25.
+//  Copyright (c) 2015年 JXH. All rights reserved.
+//
+
+#import "model.h"
+/*
+ 
+找工作列表数据模型
+ **/
+@interface findWorkListModel : model
+@property(nonatomic)NSString*title;//标题
+@property(nonatomic)NSString*address;//地址
+@property(nonatomic)NSString*phone;
+@property(nonatomic)NSString*publishTime;//发布时间
+@property(nonatomic)NSInteger id;
+@property(nonatomic)NSString*publishState;//发布状态
+@property(nonatomic)NSString*contacts;//联系人
+@property(nonatomic)NSString*autitState;//审核状态
+@property(nonatomic)NSDictionary*publisher;//发布人
+@property(nonatomic)NSInteger peopleNumber;//需要人数
+@property(nonatomic)NSString*workRequire;//职位要求
+@property(nonatomic)NSDictionary*pay;//薪资
+@end
