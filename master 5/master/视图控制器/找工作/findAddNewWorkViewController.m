@@ -281,12 +281,34 @@
 
 -(void)issure{
     
+    
+    
+    if ([subDict objectForKey:@"title"]==nil) {
+        [self.view makeToast:@"标题不能为空" duration:1 position:@"center"];
+        return;
+    }
+    else if ([subDict objectForKey:@"peopleNumber"]==nil){
+    [self.view makeToast:@"人数不能为空" duration:1 position:@"center"];
+        return;
+    }else if ([subDict objectForKey:@"payType.id"]==nil){
+        [self.view makeToast:@"待遇不能为空" duration:1 position:@"center"];
+        return;
+    }else if ([subDict objectForKey:@"workSite.id"]==nil){
+    
+        [self.view makeToast:@"工作地点不能为空" duration:1 position:@"center"];
+        return;
+    }else if ([subDict objectForKey:@"workRequire"]==nil){
+        
+        [self.view makeToast:@"职位要求不能为空" duration:1 position:@"center"];
+        return;
+    }else if ([subDict objectForKey:@"contacts"]==nil){
+        
+        [self.view makeToast:@"联系人不能为空" duration:1 position:@"center"];
+        return;
+    }
     [self flowShow];
     NSString*urlString=[self interfaceFromString:interface_isureWork];
     [subDict setObject:self.token forKey:@"token"];
-    
-    NSLog(@"%@",subDict);
-       
     [[httpManager share]POST:urlString parameters:subDict success:^(AFHTTPRequestOperation *Operation, id responseObject) {
         NSDictionary*dict=(NSDictionary*)responseObject;
         NSLog(@"%@",[dict objectForKey:@"msg"]);

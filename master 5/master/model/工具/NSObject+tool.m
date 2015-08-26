@@ -35,7 +35,7 @@
     name.textColor=[UIColor lightGrayColor];
     name.text=@"专业技能";
     if ([[UIDevice currentDevice].systemVersion integerValue]>=8) {
-        name.text=@"  专业技能";
+        name.text=@" 专业技能";
     }
     name.font=[UIFont systemFontOfSize:16];
     [view addSubview:name];

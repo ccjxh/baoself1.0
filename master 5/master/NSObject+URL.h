@@ -118,6 +118,7 @@ typedef  enum
     interface_findWorkList,//查询招工信息
     interface_quer,//招工地区
     interface_isureWork,//发布招工信息
+    interface_findWorkDetail,//招工信息详情
     
     
 }interface;

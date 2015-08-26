@@ -94,6 +94,7 @@
 #import "datePcikView.h"
 #import "findAddNewWorkModel.h"
 #import "findWorkListModel.h"
+#import "findWorkDetailModel.h"
 
 #define kScreenBounds [UIScreen mainScreen].bounds
 #define kScreenW [UIScreen mainScreen].bounds.size.width

@@ -15,5 +15,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *address;
 @property (weak, nonatomic) IBOutlet UILabel *pay;
 @property (weak, nonatomic) IBOutlet UILabel *count;
-
+@property (weak, nonatomic) IBOutlet UILabel *publicTime;
+@property (weak, nonatomic) IBOutlet UILabel *meet;
+@property (weak, nonatomic) IBOutlet UILabel *couneName;
+@property (weak, nonatomic) IBOutlet UILabel *wordAdress;
+@property (weak, nonatomic) IBOutlet UILabel *unit;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *payWidth;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *addressHeight;
+-(void)reloadData;
 @end

@@ -24,4 +24,6 @@
 @property(nonatomic)NSInteger peopleNumber;//需要人数
 @property(nonatomic)NSString*workRequire;//职位要求
 @property(nonatomic)NSDictionary*pay;//薪资
+@property(nonatomic)NSDictionary*workSite;//工作地点
+@property(nonatomic)NSDictionary*payType;//支付单位
 @end

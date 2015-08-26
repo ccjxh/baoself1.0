@@ -270,7 +270,6 @@
 
 -(UITableViewCell*)getTableViewCellWithTable:(UITableView*)table IndexPath:(NSIndexPath*)indexpath{
     
-//    NSArray*Array=@[@"专业技能",@"电话",@"期望薪资",@"日程",@"服务区域",@"服务介绍"];
      NSArray*Array=@[@"专业技能",@"电话",@"期望薪资",@"日程",@"服务介绍"];
     commendTableViewCell*Cell=[table dequeueReusableCellWithIdentifier:@"CELL"];
     if (!Cell) {

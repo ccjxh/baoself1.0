@@ -14,6 +14,7 @@
 @property (nonatomic, assign) NSInteger column;
 @property (nonatomic, assign) NSInteger row;
 @property (nonatomic, assign) NSInteger item;
+
 - (instancetype)initWithColumn:(NSInteger)column row:(NSInteger)row;
 // default item = -1 
 + (instancetype)indexPathWithCol:(NSInteger)col row:(NSInteger)row;
@@ -79,6 +80,8 @@ typedef void(^disBackGround)(UIView*view1);
 @property (nonatomic, weak) id <DOPDropDownMenuDataSource> dataSource;
 @property (nonatomic, weak) id <DOPDropDownMenuDelegate> delegate;
 @property(nonatomic,copy)dopdBlock block;
+@property (nonatomic, strong) UITableView *leftTableView;   // 一级列表
+@property (nonatomic, strong) UITableView *rightTableView;  // 二级列表
 @property (nonatomic, strong) UIColor *indicatorColor;      // 三角指示器颜色
 @property (nonatomic, strong) UIColor *textColor;           // 文字title颜色
 @property (nonatomic, strong) UIColor *textSelectedColor;   // 文字title选中颜色

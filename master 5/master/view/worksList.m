@@ -58,25 +58,22 @@
     __weak typeof(DOPDropDownMenu*)menu=_menue;
     _menue.backgroundColor=[UIColor clearColor];
     _menue.block=^(NSMutableDictionary*dict){
-//        [weSelf selectRefersh:dict];
-//        menu.selectDict=[[NSMutableDictionary alloc]initWithDictionary:dict];
+
+    
+    
     };
     _menue.areablock=^(NSInteger status){
-//        _currentTownID=status;
-//        weSelf.isRefersh=YES;
-//        [weSelf requestInformation];
-    };
-    _menue.rankblock=^(NSInteger status){
-//        if (status==1) {
-//            _currentRank=status;
-//            _currentRank=2;
-//        }
-//        weSelf.isRefersh=YES;
-//        [weSelf requestInformation];
+
         
     };
+    _menue.rankblock=^(NSInteger status){
+
+        
+        
+    };
+    
     [self addSubview:_menue];
-    self.tableview=[[RefershTableview alloc]initWithFrame:CGRectMake(0, menu.frame.origin.y+menu.frame.size.height, SCREEN_WIDTH, SCREEN_HEIGHT-menu.frame.size.height-10)];
+    self.tableview=[[RefershTableview alloc]initWithFrame:CGRectMake(0, menu.frame.origin.y+menu.frame.size.height, SCREEN_WIDTH, SCREEN_HEIGHT-menu.frame.size.height-10-49)];
     self.tableview.separatorStyle=UITableViewCellSeparatorStyleNone;
     self.tableview.backgroundColor=COLOR(240, 241, 242, 1);
     self.tableview.delegate=self;
@@ -101,14 +98,14 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    return 100;
+    return 96;
 
 }
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
 
-    return 10;
+    return 5;
 }
 
 
@@ -130,8 +127,14 @@
     cell.title.text=model.title;
     cell.width.constant=model.title.length*16+5;
     cell.personCount.text=[NSString stringWithFormat:@"人数：%lu",model.peopleNumber];
-    cell.address.text=[NSString stringWithFormat:@"地点：%@",model.address];
-    cell.date.text=model.publishTime;
+    if ([[model.payType objectForKey:@"name"] isEqualToString:@"面议"]==YES) {
+        cell.payMoney.text=@"面议";
+    }else{
+    
+        cell.payMoney.text=[NSString stringWithFormat:@"%@%@",model.pay,[model.payType objectForKey:@"name"]];
+    }
+    cell.address.text=[NSString stringWithFormat:@"地点：%@",[model.workSite objectForKey:@"name"]];
+    cell.date.text=[model.publishTime componentsSeparatedByString:@" "][0];
     return cell;
     
 }
@@ -156,8 +159,18 @@
 - (NSInteger)menu:(DOPDropDownMenu *)menu numberOfRowsInColumn:(NSInteger)column
 {
         if (column == 0) {
+            
+            NSLog(@"%lu",self.firstArray.count);
             return self.firstArray.count;
+            
         }else if (column == 1){
+            [self.secondArray removeAllObjects];
+            NSMutableArray*Array=[[dataBase share]findAllPay];
+            for (NSInteger i=0;i<Array.count; i++) {
+                payModel*model=Array[i];
+                [self.secondArray addObject:model.name];
+            }
+            
         return self.secondArray.count;
     }else {
         return self.thirdArray.count;

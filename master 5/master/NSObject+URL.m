@@ -279,6 +279,9 @@
             case interface_isureWork:
             urlString=@"project/nowPublish";
             break;
+            case interface_findWorkDetail:
+            urlString=@"project/detail";
+            break;
             default:
             break;
                 }

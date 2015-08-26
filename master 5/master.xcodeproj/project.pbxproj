@@ -540,6 +540,8 @@
 		3CC247481B12F01E00BDBB7D /* selectTownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC247471B12F01E00BDBB7D /* selectTownViewController.m */; };
 		3CC2474B1B130A7A00BDBB7D /* 未选中.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CC247491B130A7A00BDBB7D /* 未选中.png */; };
 		3CC2474C1B130A7A00BDBB7D /* 已选中.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CC2474A1B130A7A00BDBB7D /* 已选中.png */; };
+		3CC992EA1B8D56800023D8E9 /* findWorkDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC992E91B8D56800023D8E9 /* findWorkDetailViewController.m */; };
+		3CC992ED1B8D5B3D0023D8E9 /* findWorkDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC992EC1B8D5B3D0023D8E9 /* findWorkDetailModel.m */; };
 		3CCBDB7F1B6F05C7005707D9 /* customOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCBDB7D1B6F05C7005707D9 /* customOrderTableViewCell.m */; };
 		3CCBDB801B6F05C7005707D9 /* customOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CCBDB7E1B6F05C7005707D9 /* customOrderTableViewCell.xib */; };
 		3CCBDB831B6F3D92005707D9 /* personalSkillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCBDB821B6F3D92005707D9 /* personalSkillViewController.m */; };
@@ -1392,6 +1394,10 @@
 		3CC247471B12F01E00BDBB7D /* selectTownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = selectTownViewController.m; path = "视图控制器/省县市/selectTownViewController.m"; sourceTree = "<group>"; };
 		3CC247491B130A7A00BDBB7D /* 未选中.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "未选中.png"; path = "master/图片/宝师傅切片-2015-4-23/首页/未选中.png"; sourceTree = SOURCE_ROOT; };
 		3CC2474A1B130A7A00BDBB7D /* 已选中.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "已选中.png"; path = "master/图片/宝师傅切片-2015-4-23/首页/已选中.png"; sourceTree = SOURCE_ROOT; };
+		3CC992E81B8D56800023D8E9 /* findWorkDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = findWorkDetailViewController.h; path = "视图控制器/找工作/findWorkDetailViewController.h"; sourceTree = "<group>"; };
+		3CC992E91B8D56800023D8E9 /* findWorkDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = findWorkDetailViewController.m; path = "视图控制器/找工作/findWorkDetailViewController.m"; sourceTree = "<group>"; };
+		3CC992EB1B8D5B3D0023D8E9 /* findWorkDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = findWorkDetailModel.h; path = "model/数据模型/findWorkDetailModel.h"; sourceTree = "<group>"; };
+		3CC992EC1B8D5B3D0023D8E9 /* findWorkDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = findWorkDetailModel.m; path = "model/数据模型/findWorkDetailModel.m"; sourceTree = "<group>"; };
 		3CCBDB7C1B6F05C7005707D9 /* customOrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = customOrderTableViewCell.h; sourceTree = "<group>"; };
 		3CCBDB7D1B6F05C7005707D9 /* customOrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = customOrderTableViewCell.m; sourceTree = "<group>"; };
 		3CCBDB7E1B6F05C7005707D9 /* customOrderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = customOrderTableViewCell.xib; sourceTree = "<group>"; };
@@ -2090,6 +2096,8 @@
 				3C6728C31B86D6BD003ACE3E /* findWorkViewController.m */,
 				3C6D3D681B8BF8A300A08AA7 /* findAddNewWorkViewController.h */,
 				3C6D3D691B8BF8A300A08AA7 /* findAddNewWorkViewController.m */,
+				3CC992E81B8D56800023D8E9 /* findWorkDetailViewController.h */,
+				3CC992E91B8D56800023D8E9 /* findWorkDetailViewController.m */,
 			);
 			name = "找工作";
 			sourceTree = "<group>";
@@ -2178,6 +2186,8 @@
 				3C6D3D6E1B8C0F5000A08AA7 /* findAddNewWorkModel.m */,
 				3C6D3D701B8C141A00A08AA7 /* findWorkListModel.h */,
 				3C6D3D711B8C141A00A08AA7 /* findWorkListModel.m */,
+				3CC992EB1B8D5B3D0023D8E9 /* findWorkDetailModel.h */,
+				3CC992EC1B8D5B3D0023D8E9 /* findWorkDetailModel.m */,
 			);
 			name = "找师傅";
 			sourceTree = "<group>";
@@ -3970,6 +3980,7 @@
 				018861971B16E92B00B7457D /* TownTableViewController.m in Sources */,
 				3C0860FB1B16A1ED004C0383 /* SetViewController.m in Sources */,
 				3C93BE8A1B65CEDD001F2AB2 /* rootViewModel.m in Sources */,
+				3CC992EA1B8D56800023D8E9 /* findWorkDetailViewController.m in Sources */,
 				3C57B9ED1B40E280009DB823 /* waitCaseViewController.m in Sources */,
 				3C9382851B56519100D34D7A /* PBSaveBtn.m in Sources */,
 				3CC247091B11A6D900BDBB7D /* FeEqualize.m in Sources */,
@@ -4095,6 +4106,7 @@
 				3C0860D41B16A1D3004C0383 /* MasterDetailModel.m in Sources */,
 				3CB498AD1B1D5E2100AC1270 /* MNextOrderDetailViewController.m in Sources */,
 				3CC2470D1B11A6D900BDBB7D /* FeLoadingIconBox.m in Sources */,
+				3CC992ED1B8D5B3D0023D8E9 /* findWorkDetailModel.m in Sources */,
 				3C7C2D981B17F1200038CB55 /* NSObject+customCell.m in Sources */,
 				3C9382B31B56519100D34D7A /* UIImageView+SD.m in Sources */,
 				3C704CDB1B2A676000F87475 /* UIView+ABExtras.m in Sources */,

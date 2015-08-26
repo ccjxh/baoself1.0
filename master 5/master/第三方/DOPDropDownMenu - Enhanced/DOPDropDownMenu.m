@@ -79,8 +79,7 @@
 @property (nonatomic, assign) NSInteger numOfMenu;
 @property (nonatomic, assign) CGPoint origin;
 @property (nonatomic, strong) UIView *backGroundView;
-@property (nonatomic, strong) UITableView *leftTableView;   // 一级列表
-@property (nonatomic, strong) UITableView *rightTableView;  // 二级列表
+
 @property (nonatomic, strong) UIImageView *buttomImageView; // 底部imageView
 @property (nonatomic, weak) UIView *bottomShadow;
 

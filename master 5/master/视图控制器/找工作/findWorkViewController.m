@@ -10,6 +10,7 @@
 #import "worksList.h"
 #import "cityViewController.h"
 #import "findAddNewWorkViewController.h"
+#import "findWorkDetailViewController.h"
 
 
 @interface findWorkViewController ()
@@ -45,7 +46,7 @@
     _currentCityName=@"深圳市";
     [self initData];
     [self initUI];
-    
+    [self request];
     [self customLeftNavigation];
     [self customRightavigation];
     [self CreateFlow];
@@ -80,7 +81,6 @@
 -(void)changecity
 {
     AppDelegate*delegate=(AppDelegate*)[UIApplication sharedApplication].delegate;
-    
     cityViewController*cvc=[[cityViewController alloc]init];
     if (delegate.city) {
         
@@ -126,7 +126,17 @@
         _dataArray=[[NSMutableArray alloc]init];
     }
     view=[[[NSBundle mainBundle]loadNibNamed:@"worksList" owner:nil options:nil]lastObject];
-   
+    __weak typeof(self)WeSelf=self;
+    __weak typeof(NSMutableArray*)tempArray=_dataArray;
+    view.tableDidSelected=^(UITableView*tableview,NSIndexPath*indexPath){
+       
+        findWorkListModel*model=tempArray[indexPath.section];
+        findWorkDetailViewController*fvc=[[findWorkDetailViewController alloc]init];
+        fvc.id=model.id;
+        fvc.hidesBottomBarWhenPushed=YES;
+        [WeSelf pushWinthAnimation:WeSelf.navigationController Viewcontroller:fvc];
+    
+    };
     NSMutableArray*temp=[self request];
     view.firstArray=temp;
     view.secondArray=secondArray;
@@ -163,7 +173,6 @@
     AreaModel*model= [[dataBase share]findWithCity:_currentCityName];
     [objectArray addObject:[NSString stringWithFormat:@"%lu",model.id]];
     
-    
 }
 
 
@@ -180,8 +189,7 @@
     initModel.id=400000;
     initModel.name=@"全市区";
     [_townArray addObject:initModel];
-    
-    AreaModel*model=[[dataBase share]findWithCity:_currentCity];
+    AreaModel*model=[[dataBase share]findWithCity:_currentCityName];
     NSMutableArray*array=[[dataBase share]findWithPid:model.id];
     if (array.count==0) {
         NSString*urlString=[self interfaceFromString:interface_resigionList];
@@ -189,8 +197,6 @@
         [[httpManager share]POST:urlString parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSDictionary*dict=(id)responseObject;
             NSArray*Arrar=[dict objectForKey:@"entities"];
-            
-            
             [[dataBase share]addCityToDataBase:Arrar Pid:model.id];
             NSArray*newArray=[[dataBase share]findWithPid:model.id];
             for (NSInteger i=0; i<newArray.count; i++) {
@@ -198,6 +204,9 @@
                 tempModel=newArray[i];
                 [_townArray addObject:tempModel];
             }
+            view.firstArray=_townArray;
+            
+            [view.menue.leftTableView reloadData];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             
             
@@ -211,6 +220,9 @@
             tempModel=newArray[i];
             [_townArray addObject:tempModel];
         }
+        
+        view.firstArray=_townArray;
+        [view.menue.leftTableView reloadData];
     }
     return _townArray;
 }
@@ -240,7 +252,6 @@
                 NSDictionary*inforDict=array[i];
                 [model setValuesForKeysWithDictionary:[inforDict objectForKey:@"project"]];
                 [_dataArray addObject:model];
-                
             }
             view.dataArray=_dataArray;
             [view.tableview reloadData];

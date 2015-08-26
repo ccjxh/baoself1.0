@@ -11,4 +11,6 @@
 @interface findWorkDetail : UIView<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic)UITableView*tableview;
 @property(nonatomic)NSMutableArray*dataArray;
+@property(nonatomic)findWorkDetailModel*model;
+@property(nonatomic,copy)void(^reportBlock)();
 @end
