@@ -90,6 +90,7 @@
     if (Delegate.userPost==2||Delegate.userPost==3) {
         secondArray=@[@"我的服务"];
     }
+    NSArray*findJobArray=@[@"我的发布"];
     NSArray*thirdArray=@[@"工程案例"];
     NSArray*fourArray=@[@"我的收藏"];
     NSArray*fifArray=@[@"设置"];
@@ -98,6 +99,7 @@
     }
     [_dataArray addObject:FirstArray];
     [_dataArray addObject:secondArray];
+    [_dataArray addObject:findJobArray];
     [_dataArray addObject:thirdArray];
     [_dataArray addObject:fourArray];
     [_dataArray addObject:fifArray];
