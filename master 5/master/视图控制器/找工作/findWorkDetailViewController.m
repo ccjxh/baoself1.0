@@ -38,8 +38,49 @@
 
     view=[[findWorkDetail alloc]init];
     self.title=@"招工详情";
+    __weak typeof(self)WeSelf=self;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    view.deleBlock=^(NSInteger ID){
+    
+        [WeSelf deleWithID:ID];
+    
+    };
+    view.type=self.type;
     self.view=view;
+
+}
+
+
+-(void)deleWithID:(NSInteger)ID{
+
+    NSString*urlString=[self interfaceFromString:interface_delePublic];
+    NSDictionary*dict=@{@"token":self.token,@"id":[NSString stringWithFormat:@"%lu",ID]};
+    [[httpManager share]POST:urlString parameters:dict success:^(AFHTTPRequestOperation *Operation, id responseObject) {
+        [self flowHide];
+        NSDictionary*dict=(NSDictionary*)responseObject;
+        if ([[dict objectForKey:@"rspCode"] integerValue]==200) {
+        [self.view makeToast:@"删除成功" duration:1 position:@"center" Finish:^{
+            
+            if (self.removeBlock) {
+                self.removeBlock(ID);
+            }
+            
+            [self popWithnimation:self.navigationController];
+        }];
+        
+        }else{
+            
+            NSString*str=[[dict objectForKey:@"msg"] componentsSeparatedByString:@" "][0];
+            [self.view makeToast:[NSString stringWithFormat:@"网络异常%@",str] duration:1 position:@"center"];
+            
+        }
+        
+    } failure:^(AFHTTPRequestOperation *Operation, NSError *error) {
+        
+        [self flowHide];
+        [self.view makeToast:@"网络异常" duration:1 position:@"center"];
+        
+    }];
 
 }
 
@@ -52,9 +93,7 @@
     [[httpManager share]POST:urlstring parameters:dict success:^(AFHTTPRequestOperation *Operation, id responseObject) {
         NSDictionary*dict=(NSDictionary*)responseObject;
         [self flowHide];
-        
         if ([[dict objectForKey:@"rspCode"] integerValue]==200) {
-            
             NSDictionary*inforDict=[[dict objectForKey:@"entity"] objectForKey:@"project"];
             detailModel=[[findWorkDetailModel alloc]init];
             [detailModel setValuesForKeysWithDictionary:inforDict];

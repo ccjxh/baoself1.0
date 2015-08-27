@@ -88,7 +88,6 @@
     [subDict setObject:tempModel.mobile forKey:@"phone"];
     [_view.secondArrayPlace replaceObjectAtIndex:1 withObject:tempModel.mobile];
 
-    
    __block  __weak typeof(NSMutableDictionary*)weDict=subDict;
    __block  __weak typeof(self)Weself=self;
    __block __weak typeof(findAddNewWork*)WeView=_view;
@@ -103,7 +102,7 @@
                     if ([weDict objectForKey:@"title"]) {
                         ovc.origin=[weDict objectForKey:@"title"];
                     }
-                    ovc.limitCount=20;
+                    ovc.limitCount=16;
                     ovc.type=1;
                     ovc.contentBlock=^(NSString*content){
                         
@@ -127,7 +126,7 @@
                         ovc.origin=[weDict objectForKey:@"peopleNumber"];
                     }
                     ovc.limitCount=4;
-                    ovc.type=1;
+                    ovc.type=2;
                     ovc.contentBlock=^(NSString*content){
                         
                         [weDict setObject:content forKey:@"peopleNumber"];
@@ -197,7 +196,7 @@
                     if ([weDict objectForKey:@"workRequire"]) {
                         ovc.origin=[weDict objectForKey:@"workRequire"];
                     }
-                    ovc.limitCount=200;
+                    ovc.limitCount=800;
                     ovc.type=1;
                     ovc.contentBlock=^(NSString*content){
                         
@@ -282,7 +281,6 @@
 -(void)issure{
     
     
-    
     if ([subDict objectForKey:@"title"]==nil) {
         [self.view makeToast:@"标题不能为空" duration:1 position:@"center"];
         return;
@@ -311,11 +309,6 @@
     [subDict setObject:self.token forKey:@"token"];
     [[httpManager share]POST:urlString parameters:subDict success:^(AFHTTPRequestOperation *Operation, id responseObject) {
         NSDictionary*dict=(NSDictionary*)responseObject;
-        NSLog(@"%@",[dict objectForKey:@"msg"]);
-        
-        
-        
-        
         [self flowHide];
         [self.view makeToast:[dict objectForKey:@"msg"] duration:1 position:@"center" Finish:^{
            

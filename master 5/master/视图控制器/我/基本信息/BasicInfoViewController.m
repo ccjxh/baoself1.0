@@ -90,6 +90,8 @@
 -(void) upDateRegion:(NSNotification *)nof
 {
     NSDictionary *dict =  nof.object;
+    
+    
     [requestModel requestRegionInfo:[dict objectForKey:@"regionId"]];
     NSArray *arr = [[dict objectForKey:@"region"] componentsSeparatedByString:@"-"];
     NSMutableDictionary *pDict = [NSMutableDictionary dictionary];
@@ -101,8 +103,12 @@
     
 //    NSMutableDictionary *rDict = [NSMutableDictionary dictionary];
 //    [rDict setObject:arr[2] forKey:@"name"];
-    personalDetailModel.nativeCity = pDict;
-    personalDetailModel.nativeRegion = cDict;
+    
+    personalDetailModel.nativeProvince = pDict;
+    personalDetailModel.nativeCity = cDict;
+    
+    
+    
     [myInfoTableView reloadData];
 }
 #pragma mark - UITableViewDelegate & UITableViewDataSource

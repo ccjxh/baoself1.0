@@ -87,9 +87,11 @@
                 
                 self.listLabel.text = @"籍贯";
                 self.contentLabel.text=@"点击选择籍贯";
-                NSString *str = [model.nativeCity objectForKey:@"name"];
-                str = [str stringByAppendingFormat:@"-%@",[model.nativeRegion objectForKey:@"name"]];
+                NSString *str = [model.nativeProvince objectForKey:@"name"];
+                str = [str stringByAppendingFormat:@"-%@",[model.nativeCity objectForKey:@"name"]];
                 self.contentLabel.text = str;
+                
+                
             }else if (row==3){
                 self.listLabel.text=@"年龄";
                 NSString*age;

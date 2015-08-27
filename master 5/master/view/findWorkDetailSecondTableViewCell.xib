@@ -15,8 +15,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTq-fv-cxW">
-                        <rect key="frame" x="25" y="13" width="275" height="38"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTq-fv-cxW">
+                        <rect key="frame" x="8" y="8" width="304" height="48.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -26,11 +26,13 @@
                     <constraint firstAttribute="bottomMargin" secondItem="nTq-fv-cxW" secondAttribute="bottom" id="36F-Qa-3ST"/>
                     <constraint firstAttribute="trailingMargin" secondItem="nTq-fv-cxW" secondAttribute="trailing" id="WQ5-2B-OVU"/>
                     <constraint firstItem="nTq-fv-cxW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="egL-tB-7uQ"/>
-                    <constraint firstItem="nTq-fv-cxW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="uE2-gv-YzT"/>
+                    <constraint firstItem="nTq-fv-cxW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="uE2-gv-YzT"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="bottom" destination="uE2-gv-YzT" id="kIh-NB-pdZ"/>
                 <outlet property="content" destination="nTq-fv-cxW" id="WsQ-aN-jFb"/>
+                <outlet property="top" destination="36F-Qa-3ST" id="Q6f-ou-AJ9"/>
             </connections>
             <point key="canvasLocation" x="276" y="160.5"/>
         </tableViewCell>

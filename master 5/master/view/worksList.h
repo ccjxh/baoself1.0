@@ -16,7 +16,9 @@
 @property(nonatomic)NSMutableArray*thirdArray;
 @property (nonatomic) RefershTableview *tableview;
 @property(nonatomic)NSMutableArray*dataArray;//tableview数据源
+@property(nonatomic,copy)void(^menueDidSelect)(DOPIndexPath*indexpath);//筛选菜单点击事件
 @property(nonatomic,copy)void(^tableDidSelected)(UITableView*tableview,NSIndexPath*indexpath);
 @property(nonatomic,copy)void(^tableviewPullDown)(NSInteger current);
 @property(nonatomic,copy)void(^tableviewPullup)();
+@property(nonatomic,copy)void(^personBlock)(BOOL isYesOrNo);
 @end

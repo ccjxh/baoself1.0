@@ -92,6 +92,7 @@ typedef void(^disBackGround)(UIView*view1);
 @property(nonatomic)NSMutableDictionary*valueDict;
 @property(nonatomic,copy)areaBlock areablock;
 @property(nonatomic,copy)rankBlock rankblock;
+@property(nonatomic,copy)void(^personSkillBlock)(BOOL yesOrNo);
 @property(nonatomic,copy)void(^thirdBlock)(NSIndexPath*indexpath);
 @property(nonatomic)NSMutableDictionary*selectDict;
 @property(nonatomic)NSInteger type;//类型 0为自定义类型  1为默认类型

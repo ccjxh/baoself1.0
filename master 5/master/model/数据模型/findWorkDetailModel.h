@@ -22,4 +22,5 @@
 @property(nonatomic)NSDictionary*publisher;//发布人相关信息
 @property(nonatomic)NSInteger pageView;//浏览量
 @property(nonatomic)NSDictionary*workSite;//工作地点
+@property(nonatomic)NSInteger auditState;//审核状态
 @end

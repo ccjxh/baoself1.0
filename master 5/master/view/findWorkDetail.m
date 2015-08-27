@@ -39,23 +39,42 @@
     UIView*backView=[[UIView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT-44, SCREEN_WIDTH, 44)];
     backView.backgroundColor=[UIColor whiteColor];
     
-    UILabel*label=[[UILabel alloc]initWithFrame:CGRectMake(13, 0, 200, 44)];
+    UILabel*label=[[UILabel alloc]initWithFrame:CGRectMake(13, 3, 200, 20)];
     label.tag=10;
     AppDelegate*delegate=(AppDelegate*)[UIApplication sharedApplication].delegate;
     PersonalDetailModel*model=[[dataBase share]findPersonInformation:delegate.id];
     if (self.model) {
-    label.text=[NSString stringWithFormat:@"%@  %@",model.realName,model.mobile];
+    label.text=[NSString stringWithFormat:@"%@",model.realName];
     }
     label.textColor=COLOR(0, 0, 0, 1);
     label.backgroundColor=[UIColor clearColor];
     label.font=[UIFont systemFontOfSize:14];
     [backView addSubview:label];
+    UILabel*phone=[[UILabel alloc]initWithFrame:CGRectMake(13, 20, 200, 20)];
+    phone.backgroundColor=[UIColor clearColor];
+    if (self.model) {
+      phone.text=model.mobile;
+    }
+   
+    phone.font=[UIFont systemFontOfSize:14];
+    phone.tag=11;
+    [backView addSubview:phone];
     UIButton*button=[[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-140, 0, 140, 44)];
+    button.tag=12;
     [button setTitle:@"拨打电话" forState:UIControlStateNormal];
+    if (self.type==1) {
+        
+    [button setTitle:@"删除" forState:UIControlStateNormal];
+        if (self.model.auditState==1) {
+            
+      [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        }
+    
+    }
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     button.titleLabel.font=[UIFont systemFontOfSize:15];
     button.backgroundColor=COLOR(22, 168, 234, 1);
-    [button addTarget:self action:@selector(phone) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(phone:) forControlEvents:UIControlEventTouchUpInside];
     [backView addSubview:button];
     backView.userInteractionEnabled=YES;
     [self addSubview:backView];
@@ -63,7 +82,24 @@
 
 
 //拨打电话
--(void)phone{
+-(void)phone:(UIButton*)button{
+    
+    if ([button.titleLabel.text isEqualToString:@"删除"]==YES) {
+        
+        if (self.model.auditState !=1) {
+           
+            if (self.deleBlock) {
+                self.deleBlock(self.model.id);
+            }
+            
+        }else{
+        
+            [self makeToast:@"正在审核的单据不可删除" duration:1 position:@"center"];
+            
+        }
+        
+        return;
+    }
     
     NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",self.model.phone];
     //            NSLog(@"str======%@",str);
@@ -74,12 +110,22 @@
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
 
     UILabel*label=(id)[self viewWithTag:10];
+    UILabel*phone=(id)[self viewWithTag:11];
+    UIButton*button=(id)[self viewWithTag:12];
+    
     if (self.model) {
-        if (self.model) {
-            label.text=[NSString stringWithFormat:@"%@  %@",self.model.contacts,self.model.phone];
+            label.text=self.model.contacts;
+            phone.text=self.model.phone;
+        if (self.type==1) {
+            [button setTitle:@"删除" forState:UIControlStateNormal];
+            if (self.model.auditState==1) {
+                
+                [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+                
+            }
         }
     }
-    return 4;
+    return 3;
 
 }
 
@@ -135,6 +181,7 @@
         findWorkDetailTableViewCell*Cell=[tableView dequeueReusableCellWithIdentifier:@"findWorkDetailTableViewCell"];
         if (!Cell) {
             Cell=[[[NSBundle mainBundle]loadNibNamed:@"findWorkDetailTableViewCell" owner:nil options:nil]lastObject];
+            Cell.selectionStyle=0;
         }
         if (self.model) {
             
@@ -167,13 +214,13 @@
         findWorkDetailSecondTableViewCell*cell=[tableView dequeueReusableCellWithIdentifier:@"findWorkDetailSecondTableViewCell"];
         if (!cell) {
             cell=[[[NSBundle mainBundle]loadNibNamed:@"findWorkDetailSecondTableViewCell" owner:nil options:nil]lastObject];
+            cell.selectionStyle=0;
             
         }
         if (self.model) {
-        
-        cell.content.text=self.model.workRequire;
-    
+            cell.content.text=self.model.workRequire;
         }
+       
         return cell;
     }
     NSArray*array=@[@"联  系  人",@"联系电话"];
@@ -189,13 +236,22 @@
                 if (self.model) {
                 cell.content.text=placeArray[indexPath.row];
                 }
+                cell.selectionStyle=0;
                 cell.content.font=[UIFont systemFontOfSize:15];
                 cell.content.textColor=[UIColor blackColor];
                 cell.content.textAlignment=NSTextAlignmentLeft;
                 cell.name.textColor=COLOR(114, 114, 114, 1);
+                if (indexPath.row==0) {
+                    cell.topToSuperview.constant=4;
+                    cell.topToSuperVIew1.constant=4;
+                }
+                if (indexPath.row==1) {
+                    cell.topToSuperview.constant=-3;
+                    cell.topToSuperVIew1.constant=-3;
+                }
+
                 return cell;
         }
-        
     }
     if (indexPath.section==3) {
         
@@ -208,6 +264,7 @@
             [button addTarget:self action:@selector(report) forControlEvents:UIControlEventTouchUpInside];
             [cell.contentView addSubview:button];
         }
+        cell.selectionStyle=0;
         cell.textLabel.text=@"内容信息不符?";
         cell.textLabel.textColor=COLOR(114, 114, 114, 1);
         return cell;
@@ -231,15 +288,18 @@
     if (indexPath.section==1) {
         if (self.model) {
             
-            CGFloat height=[self accountStringHeightFromString:self.model.workRequire Width:SCREEN_WIDTH-30];
+            CGFloat height=[self accountStringHeightFromString:self.model.workRequire Width:SCREEN_WIDTH-20]+17;
+            if (height<40) {
+                height=40;
+            }
             return height;
         }
         
     }
     
     if (indexPath.section==2) {
-        
-        return 30;
+       
+        return 35;
         
     }
     

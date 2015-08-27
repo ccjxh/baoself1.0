@@ -68,6 +68,9 @@
 		3C08610C1B16A2DD004C0383 /* peopleDetail2TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C0861041B16A2DD004C0383 /* peopleDetail2TableViewCell.xib */; };
 		3C0861131B16A352004C0383 /* NSObject+URL.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C0861121B16A352004C0383 /* NSObject+URL.m */; };
 		3C0861161B16FDC9004C0383 /* certificateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C0861151B16FDC9004C0383 /* certificateModel.m */; };
+		3C0890751B8EE3700032C41E /* ico_make.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C0890741B8EE3700032C41E /* ico_make.png */; };
+		3C0890791B8EE46B0032C41E /* menueSelectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C0890771B8EE46B0032C41E /* menueSelectTableViewCell.m */; };
+		3C08907A1B8EE46B0032C41E /* menueSelectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C0890781B8EE46B0032C41E /* menueSelectTableViewCell.xib */; };
 		3C32BAB61B27C48800A177ED /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C32BAB31B27C48800A177ED /* libXG-SDK.a */; };
 		3C32BAB81B27C4A700A177ED /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C32BAB71B27C4A700A177ED /* CFNetwork.framework */; };
 		3C32BABA1B27C4C000A177ED /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C32BAB91B27C4C000A177ED /* CoreTelephony.framework */; };
@@ -546,6 +549,8 @@
 		3CCBDB801B6F05C7005707D9 /* customOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CCBDB7E1B6F05C7005707D9 /* customOrderTableViewCell.xib */; };
 		3CCBDB831B6F3D92005707D9 /* personalSkillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCBDB821B6F3D92005707D9 /* personalSkillViewController.m */; };
 		3CCBDB851B6F4EE3005707D9 /* ic_address.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CCBDB841B6F4EE3005707D9 /* ic_address.png */; };
+		3CCE2AC21B8EA7E800A0B49E /* myPublicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCE2AC11B8EA7E800A0B49E /* myPublicViewController.m */; };
+		3CCE2AC71B8EA82500A0B49E /* mypublicListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCE2AC61B8EA82500A0B49E /* mypublicListView.m */; };
 		3CDE8FA01B4A149E0095232F /* 我的-未选中.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CDE8F9A1B4A149E0095232F /* 我的-未选中.png */; };
 		3CDE8FA11B4A149E0095232F /* 我的-选中.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CDE8F9B1B4A149E0095232F /* 我的-选中.png */; };
 		3CDE8FA21B4A149E0095232F /* 找师傅-未选中.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CDE8F9C1B4A149E0095232F /* 找师傅-未选中.png */; };
@@ -705,6 +710,10 @@
 		3C0861121B16A352004C0383 /* NSObject+URL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+URL.m"; sourceTree = "<group>"; };
 		3C0861141B16FDC9004C0383 /* certificateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = certificateModel.h; path = "model/数据模型/certificateModel.h"; sourceTree = "<group>"; };
 		3C0861151B16FDC9004C0383 /* certificateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = certificateModel.m; path = "model/数据模型/certificateModel.m"; sourceTree = "<group>"; };
+		3C0890741B8EE3700032C41E /* ico_make.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_make.png; sourceTree = "<group>"; };
+		3C0890761B8EE46B0032C41E /* menueSelectTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = menueSelectTableViewCell.h; sourceTree = "<group>"; };
+		3C0890771B8EE46B0032C41E /* menueSelectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = menueSelectTableViewCell.m; sourceTree = "<group>"; };
+		3C0890781B8EE46B0032C41E /* menueSelectTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = menueSelectTableViewCell.xib; sourceTree = "<group>"; };
 		3C32BAB31B27C48800A177ED /* libXG-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libXG-SDK.a"; sourceTree = "<group>"; };
 		3C32BAB41B27C48800A177ED /* XGPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGPush.h; sourceTree = "<group>"; };
 		3C32BAB51B27C48800A177ED /* XGSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGSetting.h; sourceTree = "<group>"; };
@@ -1404,6 +1413,10 @@
 		3CCBDB811B6F3D92005707D9 /* personalSkillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = personalSkillViewController.h; path = "视图控制器/commonControllers/personalSkillViewController.h"; sourceTree = "<group>"; };
 		3CCBDB821B6F3D92005707D9 /* personalSkillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = personalSkillViewController.m; path = "视图控制器/commonControllers/personalSkillViewController.m"; sourceTree = "<group>"; };
 		3CCBDB841B6F4EE3005707D9 /* ic_address.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_address.png; path = "master/图片/启动相关/ic_address.png"; sourceTree = SOURCE_ROOT; };
+		3CCE2AC01B8EA7E800A0B49E /* myPublicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = myPublicViewController.h; path = "视图控制器/我的发布/myPublicViewController.h"; sourceTree = "<group>"; };
+		3CCE2AC11B8EA7E800A0B49E /* myPublicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = myPublicViewController.m; path = "视图控制器/我的发布/myPublicViewController.m"; sourceTree = "<group>"; };
+		3CCE2AC51B8EA82500A0B49E /* mypublicListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mypublicListView.h; path = view/mypublicListView.h; sourceTree = "<group>"; };
+		3CCE2AC61B8EA82500A0B49E /* mypublicListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = mypublicListView.m; path = view/mypublicListView.m; sourceTree = "<group>"; };
 		3CDE8F9A1B4A149E0095232F /* 我的-未选中.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的-未选中.png"; sourceTree = "<group>"; };
 		3CDE8F9B1B4A149E0095232F /* 我的-选中.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的-选中.png"; sourceTree = "<group>"; };
 		3CDE8F9C1B4A149E0095232F /* 找师傅-未选中.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "找师傅-未选中.png"; sourceTree = "<group>"; };
@@ -1729,6 +1742,7 @@
 		3C029A831B09D7A80020F67B /* 我 */ = {
 			isa = PBXGroup;
 			children = (
+				3CCE2ABF1B8EA7BF00A0B49E /* 我的发布 */,
 				3C5EAE1E1B292A1600307FEA /* 我的记录 */,
 				3CA95A461B258959007ABD60 /* 我推荐的人 */,
 				019634E01B2055A9006AA8DF /* 我的收藏 */,
@@ -2398,6 +2412,7 @@
 		3C8C05851AF8BEE900CF994E /* view */ = {
 			isa = PBXGroup;
 			children = (
+				3CCE2AC31B8EA7F300A0B49E /* 我的 */,
 				3C6728C51B86D821003ACE3E /* 找活干 */,
 				3C6394A41B81845C009B528C /* 城市选择 */,
 				3CBD42F51B8095F800670D28 /* 我 */,
@@ -2994,6 +3009,7 @@
 		3CA706DD1AF9EBEA0085F498 /* DOPDropDownMenu - Enhanced */ = {
 			isa = PBXGroup;
 			children = (
+				3C0890741B8EE3700032C41E /* ico_make.png */,
 				3CA706DE1AF9EBEA0085F498 /* DOPDropDownMenu.h */,
 				3CA706DF1AF9EBEA0085F498 /* DOPDropDownMenu.m */,
 				3CA706E01AF9EBEA0085F498 /* icon_chose_arrow_nor@2x.png */,
@@ -3011,6 +3027,9 @@
 				3CB1621F1B0B170200B490FE /* fourthTableViewCell.h */,
 				3CB162201B0B170200B490FE /* fourthTableViewCell.m */,
 				3CB162211B0B170200B490FE /* fourthTableViewCell.xib */,
+				3C0890761B8EE46B0032C41E /* menueSelectTableViewCell.h */,
+				3C0890771B8EE46B0032C41E /* menueSelectTableViewCell.m */,
+				3C0890781B8EE46B0032C41E /* menueSelectTableViewCell.xib */,
 			);
 			name = "DOPDropDownMenu - Enhanced";
 			path = "第三方/DOPDropDownMenu - Enhanced";
@@ -3438,6 +3457,32 @@
 			name = "省市区选择";
 			sourceTree = "<group>";
 		};
+		3CCE2ABF1B8EA7BF00A0B49E /* 我的发布 */ = {
+			isa = PBXGroup;
+			children = (
+				3CCE2AC01B8EA7E800A0B49E /* myPublicViewController.h */,
+				3CCE2AC11B8EA7E800A0B49E /* myPublicViewController.m */,
+			);
+			name = "我的发布";
+			sourceTree = "<group>";
+		};
+		3CCE2AC31B8EA7F300A0B49E /* 我的 */ = {
+			isa = PBXGroup;
+			children = (
+				3CCE2AC41B8EA7FB00A0B49E /* 我的发布 */,
+			);
+			name = "我的";
+			sourceTree = "<group>";
+		};
+		3CCE2AC41B8EA7FB00A0B49E /* 我的发布 */ = {
+			isa = PBXGroup;
+			children = (
+				3CCE2AC51B8EA82500A0B49E /* mypublicListView.h */,
+				3CCE2AC61B8EA82500A0B49E /* mypublicListView.m */,
+			);
+			name = "我的发布";
+			sourceTree = "<group>";
+		};
 		3CDABA21797757E222EDBD5B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -3693,6 +3738,7 @@
 				3CA7A2691B4D16B20031695E /* btn_close_selected.png in Resources */,
 				3C65AE1C1B7B4733002BF24C /* 个.png in Resources */,
 				3CAA507A1B7A04680063DD16 /* 1@2x.png in Resources */,
+				3C0890751B8EE3700032C41E /* ico_make.png in Resources */,
 				3CBD430A1B8099BA00670D28 /* 设置.png in Resources */,
 				3CB1621E1B0B12B900B490FE /* secondTableViewCell.xib in Resources */,
 				3C62C2671B0C2C8B00CD82A2 /* ic_star_1.png in Resources */,
@@ -3748,6 +3794,7 @@
 				3C6394C81B818900009B528C /* 29@3x.png in Resources */,
 				3CAA50931B7A04680063DD16 /* 9@3x.png in Resources */,
 				3CC2471D1B11A6D900BDBB7D /* WifiMan_Sign_2@2x.png in Resources */,
+				3C08907A1B8EE46B0032C41E /* menueSelectTableViewCell.xib in Resources */,
 				3CAA50711B7A04680063DD16 /* 10.png in Resources */,
 				3CACBF101B439A3400CF9800 /* myCaseViewController.xib in Resources */,
 				3C5EBC3B1B822BAF00BF8F4F /* headCollectionReusableView.xib in Resources */,
@@ -4023,6 +4070,7 @@
 				3CB360E01B8AF08C00FF5153 /* workListTableViewCell.m in Sources */,
 				3CC2473E1B12D04A00BDBB7D /* selelctAreaTableViewCell.m in Sources */,
 				3CC247481B12F01E00BDBB7D /* selectTownViewController.m in Sources */,
+				3CCE2AC71B8EA82500A0B49E /* mypublicListView.m in Sources */,
 				3C6728C81B86D8B9003ACE3E /* worksList.m in Sources */,
 				3CA706D31AF9E9320085F498 /* RootViewController.m in Sources */,
 				3C93828F1B56519100D34D7A /* CALayer+Transition.m in Sources */,
@@ -4066,6 +4114,7 @@
 				3C0860F91B16A1ED004C0383 /* HelpAndFeedbackViewController.m in Sources */,
 				3C0860F71B16A1ED004C0383 /* AboutViewController.m in Sources */,
 				3CC2470A1B11A6D900BDBB7D /* FeHandwriting.m in Sources */,
+				3CCE2AC21B8EA7E800A0B49E /* myPublicViewController.m in Sources */,
 				3CBB3A071B0EDD650085959A /* date.m in Sources */,
 				3C62C2781B0C6BC400CD82A2 /* rootDetailViewController.m in Sources */,
 				3CA7A26B1B4D16B20031695E /* DXAlertView.m in Sources */,
@@ -4105,6 +4154,7 @@
 				3C6728BD1B86CC38003ACE3E /* RefershTableview.m in Sources */,
 				3C0860D41B16A1D3004C0383 /* MasterDetailModel.m in Sources */,
 				3CB498AD1B1D5E2100AC1270 /* MNextOrderDetailViewController.m in Sources */,
+				3C0890791B8EE46B0032C41E /* menueSelectTableViewCell.m in Sources */,
 				3CC2470D1B11A6D900BDBB7D /* FeLoadingIconBox.m in Sources */,
 				3CC992ED1B8D5B3D0023D8E9 /* findWorkDetailModel.m in Sources */,
 				3C7C2D981B17F1200038CB55 /* NSObject+customCell.m in Sources */,

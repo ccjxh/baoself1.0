@@ -64,12 +64,29 @@
         return;
     }else{
         if (self.type==1) {
+            
             if (self.contentBlock) {
                 self.contentBlock(_tx.text);
                 [self popWithnimation:self.navigationController];
                 return;
             }
         }
+        
+        if (self.type==2) {
+            
+            if ([self isPureNumandCharacters:_tx.text]==NO) {
+                [self.view makeToast:@"人数不能为非数字" duration:1 position:@"center"];
+                return;
+            }
+            
+            
+            if (self.contentBlock) {
+                self.contentBlock(_tx.text);
+                [self popWithnimation:self.navigationController];
+                return;
+            }
+        }
+
         
         NSString*urlString;
         NSDictionary*dict;
@@ -115,14 +132,25 @@
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
     
     NSString *temp = [textView.text stringByReplacingCharactersInRange:range withString:text];
-    if (temp.length>self.limitCount) {
+    if (temp.length>self.limitCount+1) {
         
         return NO;
         
     }
+    self.label.text=[NSString stringWithFormat:@"还有%u字可以填写",self.limitCount-[textView.text length]];
     return YES;
    
 }
 
+
+- (BOOL)isPureNumandCharacters:(NSString *)string
+{
+    string =[string stringByTrimmingCharactersInSet:[NSCharacterSet decimalDigitCharacterSet]];
+    if(string.length > 0)
+    {
+        return NO;
+    }
+    return YES;
+}
 
 @end

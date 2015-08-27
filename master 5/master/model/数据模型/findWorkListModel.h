@@ -19,7 +19,7 @@
 @property(nonatomic)NSInteger id;
 @property(nonatomic)NSString*publishState;//发布状态
 @property(nonatomic)NSString*contacts;//联系人
-@property(nonatomic)NSString*autitState;//审核状态
+@property(nonatomic)NSInteger autitState;//审核状态
 @property(nonatomic)NSDictionary*publisher;//发布人
 @property(nonatomic)NSInteger peopleNumber;//需要人数
 @property(nonatomic)NSString*workRequire;//职位要求

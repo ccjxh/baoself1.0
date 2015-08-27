@@ -474,7 +474,7 @@
 
 //查找全部支付
 -(NSMutableArray*)findAllPay{
-    NSMutableArray*array=[[NSMutableArray alloc]init];
+    __block NSMutableArray*array=[[NSMutableArray alloc]init];
     NSString*sql=@"select * from pay ";
     [self inDatabase:^(FMDatabase *db) {
         [db open];

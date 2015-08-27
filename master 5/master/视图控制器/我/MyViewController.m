@@ -19,6 +19,7 @@
 #import "myServiceSelectedViewController.h"
 #import "myFirstTableViewCell.h"
 #import "myPageTableViewCell.h"
+#import "myPublicViewController.h"
 
 @interface MyViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
@@ -164,10 +165,6 @@
     return 20;
 
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -225,7 +222,18 @@
             }
         }
             break;
-        case 2:
+            
+            
+        case 2:{
+        
+            myPublicViewController*mvc=[[myPublicViewController alloc]init];
+            mvc.hidesBottomBarWhenPushed=YES;
+            [self pushWinthAnimation:self.navigationController Viewcontroller:mvc];
+            
+        }
+            
+            break;
+        case 3:
         {
             if (indexPath.row == 0) {
                 myCaseViewController *ctl = [[myCaseViewController alloc] initWithNibName:@"myCaseViewController" bundle:nil];
@@ -238,7 +246,7 @@
             }
         }
             break;
-        case 3:
+        case 4:
         {
             switch (indexPath.row) {
 //                case 0:
@@ -260,7 +268,7 @@
             }
         }
             break;
-        case 4:
+        case 5:
         {
             SetViewController *ctl = [[SetViewController alloc] init];
             ctl.hidesBottomBarWhenPushed=YES;
@@ -271,6 +279,14 @@
             break;
     }
 
+}
+
+
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 

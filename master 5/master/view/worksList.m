@@ -55,13 +55,17 @@
     _menue.textSelectedColor=COLOR(67, 67, 67, 1);
     _menue.indicatorColor=[UIColor clearColor];
     _menue.delegate=self;
-    __weak typeof(self)weSelf=self;
+    __weak typeof(self)WeSelf=self;
+    _menue.personSkillBlock=^(BOOL isStatus){
+    
+        if (WeSelf.personBlock) {
+            WeSelf.personBlock(isStatus);
+        }
+    };
     __weak typeof(DOPDropDownMenu*)menu=_menue;
     _menue.backgroundColor=[UIColor clearColor];
     _menue.block=^(NSMutableDictionary*dict){
 
-    
-    
     };
     _menue.areablock=^(NSInteger status){
 
@@ -136,6 +140,12 @@
     }
     cell.address.text=[NSString stringWithFormat:@"地点：%@",[model.workSite objectForKey:@"name"]];
     cell.date.text=[model.publishTime componentsSeparatedByString:@" "][0];
+    if ([[[model.publisher objectForKey:@"certification"] objectForKey:@"personal"] integerValue]==1) {
+        cell.skillImage.hidden=NO;
+    }else{
+    
+        cell.skillImage.hidden=YES;
+    }
     return cell;
     
 }
@@ -161,12 +171,12 @@
 {
         if (column == 0) {
             
-            NSLog(@"%lu",self.firstArray.count);
             return self.firstArray.count;
             
         }else if (column == 1){
             [self.secondArray removeAllObjects];
             NSMutableArray*Array=[[dataBase share]findAllPay];
+            [self.secondArray addObject:@"不限制"];
             for (NSInteger i=0;i<Array.count; i++) {
                 payModel*model=Array[i];
                 [self.secondArray addObject:model.name];
@@ -174,7 +184,7 @@
             
         return self.secondArray.count;
     }else {
-        return self.thirdArray.count;
+        return 1;
     }
 }
 
@@ -203,9 +213,8 @@
         if (self.thirdArray.count==0) {
             return @"信誉";
         }
-        return self.thirdArray[indexPath.row];
+        return @"信誉";
     }
-    
     
     return @"ss";
 }
@@ -224,6 +233,13 @@
     return 0;
 }
 
+-(void)menu:(DOPDropDownMenu *)menu didSelectRowAtIndexPath:(DOPIndexPath *)indexPath{
+    
+    if (self.menueDidSelect) {
+        self.menueDidSelect(indexPath);
+    }
+
+}
 
 
 @end

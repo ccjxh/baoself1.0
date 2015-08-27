@@ -102,6 +102,7 @@
                 <outlet property="date" destination="i8d-R7-bq2" id="oca-KW-CaV"/>
                 <outlet property="payMoney" destination="nk6-8I-vRl" id="BTo-w6-7ZO"/>
                 <outlet property="personCount" destination="VDo-tb-han" id="uSw-mB-gJN"/>
+                <outlet property="skillImage" destination="oSa-rm-F3c" id="FxD-Ob-g1i"/>
                 <outlet property="title" destination="EIV-35-XP9" id="NjS-yv-6Mb"/>
                 <outlet property="width" destination="HN4-qr-nkJ" id="Z4E-A1-wxt"/>
             </connections>

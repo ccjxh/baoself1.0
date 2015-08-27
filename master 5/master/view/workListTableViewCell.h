@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *payMoney;
 @property (weak, nonatomic) IBOutlet UILabel *date;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *width;
+@property (weak, nonatomic) IBOutlet UIImageView *skillImage;
 
 @end

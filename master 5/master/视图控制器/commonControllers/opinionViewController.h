@@ -16,7 +16,7 @@ typedef void (^content)(NSString*content);
 @property (weak, nonatomic) IBOutlet UITextView *tx;
 @property(nonatomic)NSString*origin;//原始数据
 @property(nonatomic)NSString*title;//标题
-@property(nonatomic)NSInteger type;//0为服务描述  1为举报
+@property(nonatomic)NSInteger type;//0为服务描述  1为举报   2为需求人数
 @property(nonatomic)NSInteger limitCount;//限制的字数
 @property(nonatomic)NSInteger id;//当为举报按钮推出本页时需传入举报人id
 @property(nonatomic,copy)opinionBlock block;

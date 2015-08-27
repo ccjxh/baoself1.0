@@ -12,6 +12,7 @@
 #import "secondTableViewCell.h"
 #import "skillTableViewCell.h"
 #import "fourthTableViewCell.h"
+#import "menueSelectTableViewCell.h"
 @implementation DOPIndexPath
 - (instancetype)initWithColumn:(NSInteger)column row:(NSInteger)row {
     self = [super init];
@@ -50,7 +51,6 @@
     // Drawing code
     CGContextRef context = UIGraphicsGetCurrentContext();
     //画一条底部线
-    
     CGContextSetRGBStrokeColor(context, 219.0/255, 224.0/255, 228.0/255, 1);//线条颜色
     CGContextMoveToPoint(context, 0, 0);
     CGContextAddLineToPoint(context, rect.size.width,0);
@@ -79,7 +79,7 @@
 @property (nonatomic, assign) NSInteger numOfMenu;
 @property (nonatomic, assign) CGPoint origin;
 @property (nonatomic, strong) UIView *backGroundView;
-
+@property(nonatomic)BOOL isShow;
 @property (nonatomic, strong) UIImageView *buttomImageView; // 底部imageView
 @property (nonatomic, weak) UIView *bottomShadow;
 
@@ -581,6 +581,24 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+    
+    if (_currentSelectedMenudIndex==2) {
+        menueSelectTableViewCell*cell=[tableView dequeueReusableCellWithIdentifier:@"menueSelectTableViewCell"];
+        if (!cell) {
+            cell=[[[NSBundle mainBundle]loadNibNamed:@"menueSelectTableViewCell" owner:nil options:nil] lastObject];
+        }
+        
+        if (_isShow==NO) {
+            
+            cell.select.hidden=YES;
+        }else{
+            
+            cell.select.hidden=NO;
+        }
+        
+        return cell;
+    }
+
     if (self.type==0) {
     if (_currentSelectedMenudIndex==1) {
 //        if (indexPath.row==0) {
@@ -664,17 +682,12 @@
             cell.selectedDic=self.selectDict;
             [cell reloadData];
             return cell;
+            }
+
         }
 
     }
-//        UITableViewCell*cell=[tableView dequeueReusableCellWithIdentifier:@"Cell"];
-//        if (!cell) {
-//            cell=[[UITableViewCell alloc]initWithStyle:1 reuseIdentifier:@"Cell"];
-//        }
-//        cell.textLabel.text=@"ss";
-//        return cell;
-    }
-    static NSString *identifier = @"DropDownMenuCell";
+       static NSString *identifier = @"DropDownMenuCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
@@ -845,6 +858,22 @@
             
         }
     }
+    
+    if (_currentSelectedMenudIndex==2) {
+        if (_isShow==NO) {
+            _isShow=YES;
+        }else{
+            
+            _isShow=NO;
+            
+        }
+        
+        if (self.personSkillBlock) {
+            self.personSkillBlock(_isShow);
+        }
+        return;
+    }
+
     if (_currentSelectedMenudIndex==0) {
         if (_areablock) {
             _areablock(indexPath.row);

@@ -282,7 +282,13 @@
             case interface_findWorkDetail:
             urlString=@"project/detail";
             break;
-            default:
+            case interface_myPublicList:
+            urlString=@"project/myList";
+            break;
+            case interface_delePublic:
+            urlString=@"project/delete";
+            break;
+             default:
             break;
                 }
     NSString*tempUrlString=[changeURL stringByAppendingPathComponent:@"openapi/"];

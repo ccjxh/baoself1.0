@@ -10,4 +10,6 @@
 
 @interface findWorkDetailViewController : RootViewController
 @property(nonatomic)NSInteger id;
+@property(nonatomic)NSInteger type;//0为找工作push   1为我的发布push
+@property(nonatomic,copy)void(^removeBlock)(NSInteger ID);
 @end

@@ -59,7 +59,7 @@
 
 
 -(void)initUI{
-    self.tableview=[[UITableView alloc]initWithFrame:CGRectMake(0, [self getOrigin], SCREEN_WIDTH, SCREEN_HEIGHT-[self getOrigin])];
+    self.tableview=[[UITableView alloc]initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     self.tableview.delegate=self;
     self.tableview.dataSource=self;
     [self.view addSubview:self.tableview];

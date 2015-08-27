@@ -120,6 +120,9 @@ typedef  enum
     interface_isureWork,//发布招工信息
     interface_findWorkDetail,//招工信息详情
     
+    interface_myPublicList,//我的招工信息
+    interface_delePublic,//删除发布
+    
     
 }interface;
 @interface NSObject (URL)
