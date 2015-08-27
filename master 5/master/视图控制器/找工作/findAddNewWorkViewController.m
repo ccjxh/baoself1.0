@@ -338,7 +338,6 @@
     } failure:^(AFHTTPRequestOperation *Operation, NSError *error) {
         
     }];
-  
 }
 
 

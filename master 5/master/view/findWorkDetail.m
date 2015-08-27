@@ -118,6 +118,19 @@
             phone.text=self.model.phone;
         if (self.type==1) {
             [button setTitle:@"删除" forState:UIControlStateNormal];
+            label.text=@"";
+            NSString*Str;
+            if (self.model.auditState==1) {
+                Str=@"正在审核";
+            }
+            else if (self.model.auditState==2){
+            Str=@"审核通过";
+            
+            }else if (self.model.auditState==2){
+            
+                Str=@"审核不通过";
+            }
+            phone.text=Str;
             if (self.model.auditState==1) {
                 
                 [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];

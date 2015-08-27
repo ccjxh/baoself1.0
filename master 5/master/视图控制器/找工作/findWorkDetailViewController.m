@@ -42,7 +42,7 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     view.deleBlock=^(NSInteger ID){
     
-        [WeSelf deleWithID:ID];
+        [WeSelf requestTokenWithID:ID];
     
     };
     view.type=self.type;
@@ -112,7 +112,21 @@
         
     }];
 
-
 }
+
+
+-(void)requestTokenWithID:(NSInteger)ID{
+    
+    NSString*urlString=[self interfaceFromString:interface_token];
+    [[httpManager share]GET:urlString parameters:nil success:^(AFHTTPRequestOperation *Operation, id responseObject) {
+        NSDictionary*dict=(NSDictionary*)responseObject;
+        self.token= [[dict objectForKey:@"properties"] objectForKey:@"token"];
+        [self deleWithID:ID];
+    } failure:^(AFHTTPRequestOperation *Operation, NSError *error) {
+        
+    }];
+    
+}
+
 
 @end
