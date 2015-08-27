@@ -273,7 +273,7 @@
         }
         NSDictionary*inforDict=[dict objectForKey:@"response"];
         NSArray*array=[dict objectForKey:@"entities"];
-        self.totalResults=[dict objectForKey:@"totalResults"];
+        self.totalResults=[dict objectForKey:@"totalPage"];
         for (NSInteger i=0; i<array.count; i++) {
             NSDictionary*tempDict=array[i];
             peoplr*model=[[peoplr alloc]init];
@@ -444,7 +444,7 @@
             [_dataArray removeAllObjects];
         }
         
-        _totalResults=[dict objectForKey:@"totalResults"] ;
+        _totalResults=[dict objectForKey:@"totalPage"] ;
         UILabel*label=(id)[self.view viewWithTag:500];
                 NSDictionary*inforDict=[dict objectForKey:@"response"];
         NSArray*array=[dict objectForKey:@"entities"];
@@ -587,12 +587,27 @@
 }
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    peoplr*model=_dataArray[indexPath.row];
+    if ([[model.certification objectForKey:@"personal"] integerValue]==1) {
+        listRootTableViewCell*cell=[tableView dequeueReusableCellWithIdentifier:@"Cell1"];
+        if (!cell) {
+            cell=[[listRootTableViewCell alloc]initWithStyle:0 reuseIdentifier:@"Cell1"];
+        }
+        cell.selectionStyle=0;
+        
+        cell.typeLabel.text=self.type;
+        cell.selectionStyle=0;
+        cell.model=model;
+        [cell reloadData];
+        return cell;
+        
+    }
     listRootTableViewCell*cell=[tableView dequeueReusableCellWithIdentifier:@"Cell"];
     if (!cell) {
         cell=[[listRootTableViewCell alloc]initWithStyle:0 reuseIdentifier:@"Cell"];
     }
     cell.selectionStyle=0;
-    peoplr*model=_dataArray[indexPath.row];
+    
     cell.typeLabel.text=self.type;
     cell.selectionStyle=0;
     cell.model=model;

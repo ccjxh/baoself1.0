@@ -117,6 +117,7 @@
             label.text=self.model.contacts;
             phone.text=self.model.phone;
         if (self.type==1) {
+            
             [button setTitle:@"删除" forState:UIControlStateNormal];
             label.text=@"";
             NSString*Str;
@@ -136,9 +137,10 @@
                 [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
                 
             }
+            return 3;
         }
     }
-    return 3;
+    return 4;
 
 }
 

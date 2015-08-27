@@ -35,7 +35,7 @@
     NSInteger payType;//待遇
     NSMutableArray * keyArray;
     NSMutableArray * objectArray;
-    NSInteger _totalResults;//总共有多少条数据
+    NSInteger _totalPage;//总共有多少条数据
     NSMutableDictionary*subDict;//提交请求的字典
     
 }
@@ -94,6 +94,7 @@
         _currentCityName=CityModel.name;
         [self customLeftNavigation];
         [self request];
+        
     };
     [self pushWinthAnimation:self.navigationController Viewcontroller:cvc];
     
@@ -145,6 +146,7 @@
     
         [WeSelf menueDidSelect:indexpath];
     };
+    
 
     NSMutableArray*temp=[self request];
     view.firstArray=temp;
@@ -158,11 +160,41 @@
         
              [WeDict setObject:@"0" forKey:@"filterCertification"];
         }
+        WeSelf.isRefersh=YES;
         [WeSelf requestListInformation];
     };
+    view.RefershBlock=^{
+    
+        _currentPage=1;
+        WeSelf.isRefersh=YES;
+        [WeSelf requestListInformation];
+    
+    };
+    view.pullUpBlock=^{
+    
+        [WeSelf pullUp];
+    
+    };
     self.view=view;
+   
     
 }
+
+-(void)pullUp{
+
+    if (_currentPage+1<=_totalPage) {
+        _currentPage++;
+        [self requestListInformation];
+    }else{
+    
+        [view.refreshFooter endRefreshing];
+        [self.view makeToast:@"没有更多数据了" duration:1 position:@"center"];
+        
+    
+    }
+
+}
+
 
 
 //筛选菜单被点击响应
@@ -178,6 +210,7 @@
                 AreaModel*model=_townArray[indexpath.row];
                 [subDict setObject:[NSString stringWithFormat:@"%lu",model.id] forKey:@"secordLocation"];
             }
+            self.isRefersh=YES;
             [self requestListInformation];
         
         }
@@ -199,6 +232,7 @@
             [subDict setObject:[NSString stringWithFormat:@"%lu",model.id] forKey:@"payType"];
             }
         
+            self.isRefersh=YES;
              [self requestListInformation];
         };
             break;
@@ -241,7 +275,6 @@
 -(NSMutableArray*)request
 {
     
-   
     if (!_townArray) {
         _townArray=[[NSMutableArray alloc]init];
     }
@@ -268,8 +301,9 @@
                 [_townArray addObject:tempModel];
             }
             view.firstArray=_townArray;
-            
             [view.menue.leftTableView reloadData];
+            self.isRefersh=YES;
+            [self requestListInformation];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [self flowHide];
             
@@ -286,8 +320,11 @@
         
         view.firstArray=_townArray;
         [view.menue.leftTableView reloadData];
+        self.isRefersh=YES;
+        [self requestListInformation];
     }
     return _townArray;
+    
 }
 
 
@@ -297,21 +334,26 @@
     self.noDataView.hidden=YES;
     self.netIll.hidden=YES;
     [self flowShow];
-    [_dataArray removeAllObjects];
-    __block NSMutableArray*temp=[[NSMutableArray alloc]init];
+    AreaModel*cityModel=[[dataBase share]findWithCity:_currentCityName];
+    [subDict setObject:[NSString stringWithFormat:@"%lu",cityModel.id] forKey:@"firstLocation"];
+    [subDict setObject:[NSString stringWithFormat:@"%lu",_currentPage] forKey:@"pageNo"];
     NSString*urlString=[self interfaceFromString:interface_findWorkList];
-    NSMutableDictionary*dict=[[NSMutableDictionary alloc]init];
     [[httpManager share]POST:urlString parameters:subDict success:^(AFHTTPRequestOperation *Operation, id responseObject) {
         NSDictionary*dict=(NSDictionary*)responseObject;
         [self flowHide];
+        
+        
         if ([[dict objectForKey:@"rspCode"] integerValue]==200) {
-            _totalResults=[[dict objectForKey:@"totalResults"] integerValue];
+            
+            if (self.isRefersh==YES) {
+                [_dataArray removeAllObjects];
+            }
+            self.isRefersh=NO;
+            _totalPage=[[dict objectForKey:@"totalPage"] integerValue];
             NSArray*array=[dict objectForKey:@"entities"] ;
             for (NSInteger i=0; i<array.count; i++) {
                 findWorkListModel*model=[[findWorkListModel alloc]init];
                 NSDictionary*inforDict=array[i];
-                
-                
                 [model setValuesForKeysWithDictionary:[inforDict objectForKey:@"project"]];
                 [_dataArray addObject:model];
             }
@@ -328,9 +370,14 @@
         
             [self.view makeToast:[dict objectForKey:@"msg"] duration:1 position:@"center"];
         }
+        
+        [view.weakRefreshHeader endRefreshing];
+        [view.refreshFooter endRefreshing];
        
     } failure:^(AFHTTPRequestOperation *Operation, NSError *error) {
         
+        [view.weakRefreshHeader endRefreshing];
+        [view.refreshFooter endRefreshing];
         [self flowHide];
         [self.view makeToast:@"网络异常" duration:1 position:@"center"];
         self.netIll.hidden=NO;

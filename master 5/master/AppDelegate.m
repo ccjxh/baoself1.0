@@ -29,6 +29,16 @@
 #import "findWorkViewController.h"
 #import "findMasterViewController.h"
 #import   <TestinAgent/TestinAgent.h>
+
+#define APP_VERSION_NUM [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+//获取版本名字
+
+#define APP_NAME_DISPLY [[[NSBundle mainBundle]infoDictionary] objectForKey:(NSString *)kCFBundleNameKey]
+
+//8.//APP 版本升级发布的ID
+#define APP_ID @"1031874136"
+#define APP_COUNTRY_CODE @"1.2"
+
 @interface AppDelegate ()<TencentSessionDelegate,WXApiDelegate,UIAlertViewDelegate>
 @property (nonatomic) CLLocationManager *locMgr;
 @property(nonatomic)BOOL havePushMessage;//是否有推送消息
@@ -51,6 +61,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
     
     [TestinAgent init:@"c5ea5096fd7481f747bbad61c3005e8d" channel:nil config:[TestinConfig defaultConfig]];
     

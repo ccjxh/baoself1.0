@@ -18,7 +18,7 @@
 
     mypublicListView*view;
     NSInteger _currentPage;
-    NSInteger _totalResults;
+    NSInteger _totalPage;
     NSMutableArray*_dataArray;
 }
 - (void)viewDidLoad {
@@ -69,11 +69,37 @@
          [WeSelf requestTokenWithPublic:model.id IndexPath:indexPath];
         
     };
+    view.RefershBlock=^{
+    
+        _currentPage=1;
+        WeSelf.isRefersh=YES;
+        [WeSelf request];
+    
+    };
+    
+    view.pullUpBlock=^{
+    
+        [WeSelf pullUp];
+    
+    };
     
     self.view=view;
 
 }
 
+
+-(void)pullUp{
+
+    if (_currentPage+1<=_totalPage) {
+        _currentPage++;
+        [self request];
+    }else{
+    
+        [view.refreshFooter endRefreshing];
+        [self.view makeToast:@"没有更多了" duration:1 position:@"center"];
+    }
+
+}
 
 -(void)deletePublic:(NSInteger)ID IndexPath:(NSIndexPath*)indexPath{
 
@@ -115,14 +141,17 @@
         _dataArray=[[NSMutableArray alloc]init];
     }
     
-    [_dataArray removeAllObjects];
+    if (self.isRefersh==YES) {
+         [_dataArray removeAllObjects];
+    }
+    self.isRefersh=NO;
     NSString*urlString=[self interfaceFromString:interface_myPublicList];
     NSDictionary*dict=@{@"pageNo":[NSString stringWithFormat:@"%lu",_currentPage],@"pageSize":@"10"};
     [[httpManager share]POST:urlString parameters:dict success:^(AFHTTPRequestOperation *Operation, id responseObject) {
         NSDictionary*dict=(NSDictionary*)responseObject;
         [self flowHide];
         if ([[dict objectForKey:@"rspCode"] integerValue]==200) {
-            _totalResults=[[dict objectForKey:@"totalResults"] integerValue];
+            _totalPage=[[dict objectForKey:@"totalPage"] integerValue];
             NSArray*array=[dict objectForKey:@"entities"] ;
             for (NSInteger i=0; i<array.count; i++) {
                 findWorkListModel*model=[[findWorkListModel alloc]init];
@@ -145,11 +174,14 @@
             [self.view makeToast:[dict objectForKey:@"msg"] duration:1 position:@"center"];
         }
 
-        
+        [view.weakRefreshHeader endRefreshing];
+        [view.refreshFooter endRefreshing];
         
     } failure:^(AFHTTPRequestOperation *Operation, NSError *error) {
         
         [self flowHide];
+        [view.weakRefreshHeader endRefreshing];
+        [view.refreshFooter endRefreshing];
         [self.view makeToast:@"网络异常" duration:1 position:@"center"];
         self.netIll.hidden=NO;
         

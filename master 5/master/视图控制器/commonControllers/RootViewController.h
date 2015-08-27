@@ -17,11 +17,12 @@ typedef void (^loadMoreBlock)();
 }
 
 @property (nonatomic, weak) SDRefreshHeaderView *refreshHeader;
+@property (nonatomic, weak) SDRefreshFooterView *refreshFooter;
+
 @property (nonatomic, weak) UIImageView *animationView;
 @property (nonatomic, weak) UIImageView *boxView;
 @property (nonatomic, weak) UILabel *label;
 @property(nonatomic)NSInteger Page;
-@property (nonatomic, weak) SDRefreshFooterView *refreshFooter;
 @property(nonatomic)BOOL isRefersh;//是否是下拉刷新
 @property(nonatomic,weak)SDRefreshHeaderView *weakRefreshHeader;//下拉刷新透视图
 @property(nonatomic,copy)refershBlock RefershBlock;//上拉刷新处理

@@ -40,6 +40,7 @@ PODS:
   - FMDB/common (2.5)
   - FMDB/standard (2.5):
     - FMDB/common
+  - Harpy (3.3.10)
   - IQKeyboardManager (3.2.4)
   - MBProgressHUD (0.9.1)
   - MJRefresh (1.4.7)
@@ -63,6 +64,7 @@ DEPENDENCIES:
   - ASIHTTPRequest (~> 1.8.2)
   - CocoaSecurity (~> 1.2.4)
   - FMDB (~> 2.5)
+  - Harpy
   - IQKeyboardManager (~> 3.2.3)
   - MBProgressHUD (~> 0.9.1)
   - MJRefresh (~> 1.4.5)
@@ -89,6 +91,7 @@ SPEC CHECKSUMS:
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
   CocoaSecurity: d288a6f87e0f363823d2cb83e753814a6944f71a
   FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
+  Harpy: 7cb3e32eea8a21af0e89b7f9f7bccd23f9427139
   IQKeyboardManager: 555b1231fefafb21b19278d7cca72986a27b748b
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   MJRefresh: 6b140993028fa30f1fcb88e82925a7c7911415cf
@@ -100,6 +103,6 @@ SPEC CHECKSUMS:
   SDWebImage-ProgressView: cdc29091ec0d53fd6dab3df65039a4f308e0a5ae
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
   UIToast: 1fa08a3d167d2d2a66083c78adb1cad22b260ba9
-  UzysAnimatedGifPullToRefresh: d23e3ae2b22448e110eb57f80f2d3c9982a18c8d
+  UzysAnimatedGifPullToRefresh: 6486aea62bf35e79429e9d86cdd100f085a9a461
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.38.2

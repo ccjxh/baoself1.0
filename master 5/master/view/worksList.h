@@ -18,7 +18,14 @@
 @property(nonatomic)NSMutableArray*dataArray;//tableview数据源
 @property(nonatomic,copy)void(^menueDidSelect)(DOPIndexPath*indexpath);//筛选菜单点击事件
 @property(nonatomic,copy)void(^tableDidSelected)(UITableView*tableview,NSIndexPath*indexpath);
-@property(nonatomic,copy)void(^tableviewPullDown)(NSInteger current);
-@property(nonatomic,copy)void(^tableviewPullup)();
 @property(nonatomic,copy)void(^personBlock)(BOOL isYesOrNo);
+@property (nonatomic, weak) SDRefreshHeaderView *refreshHeader;
+@property (nonatomic, weak) SDRefreshFooterView *refreshFooter;
+@property(nonatomic,weak)SDRefreshHeaderView *weakRefreshHeader;//下拉刷新透视图
+@property(nonatomic,copy)refershBlock RefershBlock;//上拉刷新处理
+@property(nonatomic)BOOL isRefersh;//是否是下拉刷新
+@property (nonatomic, weak) UIImageView *animationView;
+@property (nonatomic, weak) UIImageView *boxView;
+@property (nonatomic, weak) UILabel *label;
+@property(nonatomic,copy)void(^pullUpBlock)();//上拉加载
 @end

@@ -106,6 +106,10 @@
     
        if ([[self.model.certification objectForKey:@"personal"] integerValue]==1) {
            personalImageview.image=[UIImage imageNamed:@"skill.png"];
+       }else{
+       
+           personalImageview.hidden=YES;
+       
        }
        if ([[self.model.certification objectForKey:@"company"] integerValue]==1) {
            personalImageview.image=[UIImage imageNamed:@"ic_compay"];

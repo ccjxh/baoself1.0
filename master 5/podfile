@@ -2,6 +2,7 @@
  platform :ios, '7.0'
  pod 'SVPullToRefresh', '~> 0.4.1'
  pod 'FMDB', '~> 2.5'
+ pod 'Harpy'
  pod 'PDTSimpleCalendar', '~> 0.8.0'
  pod 'UzysAnimatedGifPullToRefresh', :git => 'https://github.com/uzysjung/UzysAnimatedGifPullToRefresh.git'
  pod 'AFNetworking', '~> 2.5.4'
